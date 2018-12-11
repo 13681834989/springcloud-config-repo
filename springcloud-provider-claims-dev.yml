@@ -1,10 +1,10 @@
 management:
   security:
     enabled: false
-
-
-#发生超时是是否中断，默认true
 hystrix:
+  config:
+    stream:
+      maxConcurrentConnections: 50
   command:
     default:
       execution:
@@ -12,9 +12,4 @@ hystrix:
           enabled: true
         isolation:
           thread:
-            timeoutInMilliseconds: 50000
-
-hystrix:
-  config:
-    stream:
-      maxConcurrentConnections: 50
+            timeoutInMilliseconds: 30000
