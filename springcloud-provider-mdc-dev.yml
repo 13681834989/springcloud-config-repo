@@ -33,8 +33,8 @@ spring:
 springcloud:
   dingTalk:
     webhookToken:
-      sendException: 7b0fcc73f3d2be1415c5d31e5b34100c689961454af15a61635749ba0d8*****
-      jobListener: 7b0fcc73f3d2be1415c5d31e5b34100c689961454af15a61635749ba0d8*****
+      sendException: 0fc2122c955fb9350ca5d840bbe592cd31158ae9dea3b6699d4063eecc402afa
+      jobListener: 0fc2122c955fb9350ca5d840bbe592cd31158ae9dea3b6699d4063eecc402afa
 	 	  
 mybatis:
   mapper-locations: classpath:mapper/*.xml
