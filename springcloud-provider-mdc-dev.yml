@@ -14,15 +14,24 @@ hystrix:
           thread:
             timeoutInMilliseconds: 30000
 spring:
-  druid:
-    druidClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springcloud-mdc?characterEncoding=utf8&useSSL=false
-    maxActive: 30
-    minIdle: 5
-    maxWait: 10000
-    validationgQuery: SELECT 'X'
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+  url : jdbc:mysql://localhost:3306/springcloud-mdc?characterEncoding=utf8&useSSL=false
+  driverClassName: com.mysql.jdbc.Driver
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  maxWait: 60000
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  validationQuery: SELECT 1
+  testWhileIdle: true
+  testOnBorrow: false
+  testOnReturn: false
+  poolPreparedStatements: true
+  maxPoolPreparedStatementPerConnectionSize: 20
+  filters: stat,wall,log4j
+  connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000;noAccessToProcedureBodies=true;useUnicode=true;characterEncoding=utf-8;useOldAliasMetadataBehavior=true;autoReconnect=true
 springcloud:
   dingTalk:
     webhookToken:
