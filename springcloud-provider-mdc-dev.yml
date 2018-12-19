@@ -13,7 +13,6 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 30000
-			
 spring:
   druid:
     druidClassName: com.mysql.cj.jdbc.Driver
@@ -29,7 +28,6 @@ springcloud:
     webhookToken:
       sendException: 0fc2122c955fb9350ca5d840bbe592cd31158ae9dea3b6699d4063eecc402afa
       jobListener: 0fc2122c955fb9350ca5d840bbe592cd31158ae9dea3b6699d4063eecc402afa
-	 	  
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   config:
