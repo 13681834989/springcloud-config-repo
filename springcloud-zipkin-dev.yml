@@ -1,9 +1,12 @@
-spring:
-   datasource:
+management:
+  security:
+    enabled: false
+spring: 
+  datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springcloud_zipkin?characterEncoding=utf8&useSSL=false
-    username: root
-    password: 1234
+    url: jdbc:mysql://10.186.43.113:16063/custdb_sit?characterEncoding=utf8&useSSL=false
+    username: cust
+    password: CrFyeFhZYRvooXxdApfYkw==
     filters: stat,wall
     druid:
       initial-size: 10
@@ -24,15 +27,6 @@ spring:
     locator:
       discovery:
         enabled: true
-
-zipkin:
-  collector:
-    rabbitmq:
-      addresses: paascloud-mq-rabbit:5672
-      username: guest
-      password: guest
-      queue: zipkin
+zipkin: 
   storage:
     type: mysql
-
-
