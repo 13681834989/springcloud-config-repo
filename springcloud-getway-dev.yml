@@ -1,54 +1,25 @@
 spring:
-  http:
-    encoding:
-      charset: UTF-8
-      force: true
-      enabled: true
-    multipart:
-      enabled: true
-      max-request-size: 50MB
-      max-file-size: 50MB
-
-zuul:
-  host:
-    socket-timeout-millis: 60000
-    connect-timeout-millis: 60000
-  forceOriginalQueryStringEncoding: true
-  routes:
-    claims-route:
-      path: /claims/**
-      sensitiveHeaders:
-#      strip-prefix: false
-      service-id: springcloud-provider-claims
-      ribbon:
-        eager-load:
+  cloud:
+    gateway:
+      discovery:
+        locator:
           enabled: true
-        MaxAutoRetries: 1
-        MaxAutoRetriesNextServer: 2
-        OkToRetryOnAllOperations: false
-        ConnectTimeout: 10000
-        ReadTimeout: 10000
-    underwrite-route:
-      path: /underwrite/**
-      sensitiveHeaders:
-      service-id: springcloud-provider-underwrite
-      ribbon:
-        eager-load:
-          enabled: true
-        MaxAutoRetries: 1
-        MaxAutoRetriesNextServer: 2
-        OkToRetryOnAllOperations: false
-        ConnectTimeout: 10000
-        ReadTimeout: 10000
-  add-proxy-headers: true
-  add-host-header: true
+      routes:
+      - id: SPRINGCLOUD-PROVIDER-CLAIMS
+        uri: lb://SPRINGCLOUD-PROVIDER-CLAIMS
+        predicates:
+          - Path=/SPRINGCLOUD-PROVIDER-CLAIMS/**
+      - id: SPRINGCLOUD-PROVIDER-UNDERWRITE
+        uri: lb://SPRINGCLOUD-PROVIDER-UNDERWRITE
+        predicates:
+          - Pach=/SPRINGCLOUD-PROVIDER-UNDERWRITE/**
 
-# swagger butler配置
-swagger.butler:
-  api-docs-path: v2/api-docs
-  swagger-version: 1.0
-  auto-generate-from-zuul-routes: true
-# 指定要生成的范围
-  generate-routes: claims-route,underwrite-route
-# 忽略某些路由生成
-#  ignore-routes:
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug
+feign:
+  hystrix:
+    enabled: true
