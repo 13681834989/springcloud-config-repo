@@ -13,6 +13,8 @@ spring:
         uri: lb://SPRINGCLOUD-PROVIDER-UNDERWRITE
         predicates:
           - Pach=/SPRINGCLOUD-PROVIDER-UNDERWRITE/**
+    refresh:
+      refreshable: none
 
 logging:
   level:
@@ -23,3 +25,4 @@ logging:
 feign:
   hystrix:
     enabled: true
+    
