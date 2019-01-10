@@ -9,22 +9,10 @@ spring:
         uri: lb://SPRINGCLOUD-PROVIDER-CLAIMS
         predicates:
           - Path=/SPRINGCLOUD-PROVIDER-CLAIMS/**
-        filters:
-          - RewritePath=/SPRINGCLOUD-PROVIDER-CLAIMS/(?<path>.*), /$\{path}
-          - name: Hystrix
-            args:
-              name: fallbackcmd
-              fallbackUri: forward:/fallback
       - id: SPRINGCLOUD-PROVIDER-UNDERWRITE
         uri: lb://SPRINGCLOUD-PROVIDER-UNDERWRITE
         predicates:
           - Pach=/SPRINGCLOUD-PROVIDER-UNDERWRITE/**
-        filters:
-          - RewritePath=/SPRINGCLOUD-PROVIDER-UNDERWRITE/(?<path>.*), /$\{path}
-          - name: Hystrix
-            args:
-              name: fallbackcmd
-              fallbackUri: forward:/fallback
 
 logging:
   level:
