@@ -1,6 +1,7 @@
 spring:
   cloud:
     gateway:
+      default-fliters:
       discovery:
         locator:
           enabled: true
