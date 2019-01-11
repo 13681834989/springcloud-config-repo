@@ -8,11 +8,11 @@ spring:
         predicates:
         - Path=claims/**
         filters:
-        - StripPrefix= 1
+        - StripPrefix=1
       - id: springcloud-provider-underwrite
         uri: lb://springcloud-provider-underwrite
         predicates:
         - Path=underwrite/**
         filters:
-        - StripPrefix= 1
+        - StripPrefix=1
     
