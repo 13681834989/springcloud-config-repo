@@ -7,15 +7,19 @@ spring:
           enabled: true
       routes:
       - id: springcloud-provider-claims
-        uri: lb://springcloud-provider-claims
+        uri: lb://SPRINGCLOUD-PROVIDER-CLAIMS
         predicates:
         - Path=claims/**
         filters:
         - StripPrefix=1
       - id: springcloud-provider-underwrite
-        uri: lb://springcloud-provider-underwrite
+        uri: lb://SPRINGCLOUD-PROVIDER-UNDERWRITE
         predicates:
         - Path=underwrite/**
         filters:
         - StripPrefix=1
+		
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
     
