@@ -1,39 +1,18 @@
 spring:
   cloud:
     gateway:
-      default-fliters:
-      discovery:
-        locator:
-          enabled: true
+      default-filters:
       routes:
       - id: springcloud-provider-claims
         uri: lb://springcloud-provider-claims
         predicates:
-          - Path=/claims/**
+        - Path=claims/**
+        filters:
+        - StripPrefix= 1
       - id: springcloud-provider-underwrite
         uri: lb://springcloud-provider-underwrite
         predicates:
-          - Pach=/underwrite/**
-
-logging:
-  level:
-    org.springframework.cloud.gateway: trace
-    org.springframework.http.server.reactive: debug
-    org.springframework.web.reactive: debug
-    reactor.ipc.netty: debug
-feign:
-  hystrix:
-    enabled: true
-hystrix:
-  config:
-    stream:
-      maxConcurrentConnections: 50
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: true
-        isolation:
-          thread:
-            timeoutInMilliseconds: 30000
+        - Path=underwrite/**
+        filters:
+        - StripPrefix= 1
     
