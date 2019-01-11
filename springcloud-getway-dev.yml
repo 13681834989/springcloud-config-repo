@@ -9,10 +9,6 @@ spring:
         uri: lb://SPRINGCLOUD-PROVIDER-CLAIMS
         predicates:
           - Path=/SPRINGCLOUD-PROVIDER-CLAIMS/**
-      - id: SPRINGCLOUD-PROVIDER-UNDERWRITE
-        uri: lb://SPRINGCLOUD-PROVIDER-UNDERWRITE
-        predicates:
-          - Pach=/SPRINGCLOUD-PROVIDER-UNDERWRITE/**
 
 logging:
   level:
