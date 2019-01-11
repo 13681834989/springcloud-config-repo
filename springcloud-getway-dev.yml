@@ -5,10 +5,14 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: SPRINGCLOUD-PROVIDER-CLAIMS
-        uri: lb://SPRINGCLOUD-PROVIDER-CLAIMS
+      - id: springcloud-provider-claims
+        uri: lb://springcloud-provider-claims
         predicates:
-          - Path=/SPRINGCLOUD-PROVIDER-CLAIMS/**
+          - Path=/claims/**
+      - id: springcloud-provider-underwrite
+        uri: lb://springcloud-provider-underwrite
+        predicates:
+          - Pach=/underwrite/**
 
 logging:
   level:
