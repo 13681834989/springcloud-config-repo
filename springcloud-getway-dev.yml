@@ -1,25 +1,29 @@
 spring:
   cloud:
     gateway:
-      default-filters:
       discovery:
         locator:
           enabled: true
       routes:
-      - id: springcloud-provider-claims
+      - id: SPRINGCLOUD-PROVIDER-CLAIMS
         uri: lb://SPRINGCLOUD-PROVIDER-CLAIMS
         predicates:
-        - Path=claims/**
+          - Path=/claims/**
         filters:
         - StripPrefix=1
-      - id: springcloud-provider-underwrite
+      - id: SPRINGCLOUD-PROVIDER-UNDERWRITE
         uri: lb://SPRINGCLOUD-PROVIDER-UNDERWRITE
         predicates:
-        - Path=underwrite/**
+          - Pach=/underwrite/**
         filters:
         - StripPrefix=1
-		
+
 logging:
   level:
-    org.springframework.cloud.gateway: debug
-    
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug
+feign:
+  hystrix:
+    enabled: true
